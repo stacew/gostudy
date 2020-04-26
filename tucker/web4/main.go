@@ -1,8 +1,8 @@
 package main
 
 import (
-	"gostudy/web4/decoHandler"
-	"gostudy/web4/myapp"
+	"gostudy/tucker/web4/decoHandler"
+	"gostudy/tucker/web4/myapp"
 	"log"
 	"net/http"
 	"time"

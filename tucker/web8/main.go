@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostudy/web8/app"
+	"gostudy/tucker/web8/app"
 	"net/http"
 
 	"github.com/urfave/negroni"

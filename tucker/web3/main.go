@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostudy/web3/myapp"
+	"gostudy/tucker/web3/myapp"
 	"net/http"
 )
 
