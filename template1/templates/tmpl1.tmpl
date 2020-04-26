@@ -1,0 +1,9 @@
+Name_: {{.Name}}
+Email_:{{.Email}}
+{{if .IsOld -}}
+OldAge_:{{.Age}}
+{{else -}}
+Age_:{{.Age}}
+{{end -}}
+
+<a href="/user?email={{.Email}}">user</a>

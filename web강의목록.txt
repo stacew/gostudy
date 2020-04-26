@@ -1,0 +1,27 @@
+web1 핸들러
+github.com/stretchr/testify/assert : assert 이용 가능
+스마트스트리트/goconvey : 8080 포트 빌드 및 테스트(_test.go) 서버
+
+web2 파일서버
+1080292467614-dornb5jnq0tlh113i9u11t6v0el08pf8.apps.googleusercontent.com
+web3 restful api
+고릴라/mux : why? 설치
+
+web4 decorator handler
+
+web5 pat, render, negroni
+고릴라/pat : 짧은 Rest API 사용 가능
+render : ResponseWriter에 json코드 압축 사용
+negroni : public 폴더의 파일들을 기본적으로 제공?
+
+web6 EventSource를 사용한 채팅프로그램
+EventSource : socket처럼 연결해서 사용하는 느낌
+
+web7 oAuth 2.0
+로그인 시스템 이용
+리다이렉트 URI 설정, 환경 변수 ID, KEY 설정
+http://localhost:3000/auth/google/callback
+go get golang.org/x/oauth2
+go get cloud.google.com/go
+
+web8 bootstrap jquery
