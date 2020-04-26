@@ -3,9 +3,9 @@ github.com/stretchr/testify/assert : assert 이용 가능
 스마트스트리트/goconvey : 8080 포트 빌드 및 테스트(_test.go) 서버
 
 web2 파일서버
-1080292467614-dornb5jnq0tlh113i9u11t6v0el08pf8.apps.googleusercontent.com
+
 web3 restful api
-고릴라/mux : why? 설치
+고릴라/mux : 쉽게 사용하기 위해 -> 후에 고릴라/pat
 
 web4 decorator handler
 
