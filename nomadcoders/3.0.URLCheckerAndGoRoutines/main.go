@@ -15,7 +15,6 @@ var errRequestFail = errors.New("Request Failed")
 
 func main() {
 
-	var results = make(map[string]string)
 	c := make(chan reqResult)
 
 	urls := []string{
@@ -40,7 +39,7 @@ func main() {
 
 //chan<- Input Only Type
 func hitURL(url string, c chan<- reqResult) {
-	//fmt.Println("Checking:", url)
+	fmt.Println("Checking:", url)
 
 	status := "OK"
 	resp, err := http.Get(url)
