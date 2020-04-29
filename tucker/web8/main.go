@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gostudy/tucker/web8/app"
 	"net/http"
 
+	"github.com/stacew/gostudy/tucker/web8/app"
 	"github.com/urfave/negroni"
 )
 

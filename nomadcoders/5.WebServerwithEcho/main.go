@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/labstack/echo"
-	scrapper "gostudy/nomadcoders/4.JobScrapper"
+	scrapper "github.com/stacew/gostudy/nomadcoders/4.JobScrapper"
 )
 
 //github.com/labstack/echo

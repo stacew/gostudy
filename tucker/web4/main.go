@@ -1,11 +1,12 @@
 package main
 
 import (
-	"gostudy/tucker/web4/decoHandler"
-	"gostudy/tucker/web4/myapp"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/stacew/gostudy/tucker/web4/decoHandler"
+	"github.com/stacew/gostudy/tucker/web4/myapp"
 )
 
 func logger1(w http.ResponseWriter, r *http.Request, h http.Handler) {

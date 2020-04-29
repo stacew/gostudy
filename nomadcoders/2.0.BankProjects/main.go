@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"gostudy/nomadcoders/2.0.BankProjects/accounts"
+	"github.com/stacew/gostudy/nomadcoders/2.0.BankProjects/accounts"
 )
 
 func main() {

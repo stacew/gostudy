@@ -3,13 +3,13 @@ package app
 import (
 	"encoding/json"
 	"fmt"
-	"gostudy/tucker/web8/model"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
 	"strconv"
 	"testing"
 
+	"github.com/stacew/gostudy/tucker/web8/model"
 	"github.com/stretchr/testify/assert"
 )
 

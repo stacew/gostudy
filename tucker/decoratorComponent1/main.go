@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"gostudy/tucker/decoratorComponent1/cipher"
-	"gostudy/tucker/decoratorComponent1/lzw"
+
+	"github.com/stacew/gostudy/tucker/decoratorComponent1/cipher"
+	"github.com/stacew/gostudy/tucker/decoratorComponent1/lzw"
 )
 
 //interface

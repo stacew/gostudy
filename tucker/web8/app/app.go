@@ -1,11 +1,11 @@
 package app
 
 import (
-	"gostudy/tucker/web8/model"
 	"net/http"
 	"strconv"
 
 	"github.com/gorilla/mux"
+	"github.com/stacew/gostudy/tucker/web8/model"
 	"github.com/unrolled/render"
 )
 

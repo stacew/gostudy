@@ -1,8 +1,9 @@
 package main
 
 import (
-	"gostudy/tucker/web3/myapp"
 	"net/http"
+
+	"github.com/stacew/gostudy/tucker/web3/myapp"
 )
 
 func main() {

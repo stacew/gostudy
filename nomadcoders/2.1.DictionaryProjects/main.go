@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"gostudy/nomadcoders/2.1.DictionaryProjects/mydict"
+	"github.com/stacew/gostudy/nomadcoders/2.1.DictionaryProjects/mydict"
 )
 
 func main() {
