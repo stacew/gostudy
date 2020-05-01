@@ -16,7 +16,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func getTodoListHandler(w http.ResponseWriter, r *http.Request) {
-	list := model.GetTodo()
+	list := model.GetTodos()
 	rd.JSON(w, http.StatusOK, list)
 }
 
