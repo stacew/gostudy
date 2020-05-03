@@ -6,22 +6,29 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
+	"os"
 	"strconv"
 	"testing"
 
-	"github.com/stacew/gostudy/tucker/web8/model"
+	"github.com/stacew/gostudy/tucker/web8/dataModel"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestTodos(t *testing.T) {
 	assert := assert.New(t)
-	ts := httptest.NewServer(MakeNewHandler())
+
+	testFilePath := "./test.db"
+	os.Remove(testFilePath)
+	ah := MakeNewHandler(testFilePath)
+	defer ah.Close()
+
+	ts := httptest.NewServer(ah)
 	defer ts.Close()
 
 	resp, err := http.PostForm(ts.URL+"/todoH", url.Values{"name": {"Test todo"}})
 	assert.NoError(err)
 	assert.Equal(http.StatusCreated, resp.StatusCode)
-	var todo model.Todo
+	var todo dataModel.Todo
 	err = json.NewDecoder(resp.Body).Decode(&todo)
 	assert.NoError(err)
 	assert.Equal(todo.Name, "Test todo")
@@ -30,7 +37,7 @@ func TestTodos(t *testing.T) {
 	resp, err = http.PostForm(ts.URL+"/todoH", url.Values{"name": {"Test todo2"}})
 	assert.NoError(err)
 	assert.Equal(http.StatusCreated, resp.StatusCode)
-	var todo2 model.Todo
+	var todo2 dataModel.Todo
 	err = json.NewDecoder(resp.Body).Decode(&todo2)
 	assert.NoError(err)
 	assert.Equal(todo2.Name, "Test todo2")
@@ -39,7 +46,7 @@ func TestTodos(t *testing.T) {
 	resp, err = http.Get(ts.URL + "/todoH")
 	assert.NoError(err)
 	assert.Equal(http.StatusOK, resp.StatusCode)
-	todos := []*model.Todo{}
+	todos := []*dataModel.Todo{}
 	err = json.NewDecoder(resp.Body).Decode(&todos)
 	assert.NoError(err)
 	assert.Equal(len(todos), 2)
@@ -59,7 +66,7 @@ func TestTodos(t *testing.T) {
 	resp, err = http.Get(ts.URL + "/todoH")
 	assert.NoError(err)
 	assert.Equal(http.StatusOK, resp.StatusCode)
-	todos = []*model.Todo{}
+	todos = []*dataModel.Todo{}
 	err = json.NewDecoder(resp.Body).Decode(&todos)
 	assert.NoError(err)
 	assert.Equal(len(todos), 2)
@@ -76,7 +83,7 @@ func TestTodos(t *testing.T) {
 	resp, err = http.Get(ts.URL + "/todoH")
 	assert.NoError(err)
 	assert.Equal(http.StatusOK, resp.StatusCode)
-	todos = []*model.Todo{}
+	todos = []*dataModel.Todo{}
 	err = json.NewDecoder(resp.Body).Decode(&todos)
 	assert.NoError(err)
 	assert.Equal(len(todos), 1)

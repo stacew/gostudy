@@ -1,4 +1,4 @@
-package model
+package dataModel
 
 import "time"
 
@@ -9,14 +9,14 @@ type mapHandler struct {
 
 //var todoSlice []*Todo
 
-func (m *mapHandler) getTodos() []*Todo {
+func (m *mapHandler) GetTodos() []*Todo {
 	list := []*Todo{}
 	for _, v := range m.todoMap {
 		list = append(list, v)
 	}
 	return list
 }
-func (m *mapHandler) addTodo(name string) *Todo {
+func (m *mapHandler) AddTodo(name string) *Todo {
 	id := m.genID
 	m.genID++
 
@@ -24,14 +24,14 @@ func (m *mapHandler) addTodo(name string) *Todo {
 	m.todoMap[id] = todo
 	return todo
 }
-func (m *mapHandler) removeTodo(id int) bool {
+func (m *mapHandler) RemoveTodo(id int) bool {
 	if _, ok := m.todoMap[id]; ok {
 		delete(m.todoMap, id)
 		return true
 	}
 	return false
 }
-func (m *mapHandler) completeTodo(id int, complete bool) bool {
+func (m *mapHandler) CompleteTodo(id int, complete bool) bool {
 
 	if todo, ok := m.todoMap[id]; ok {
 		todo.Completed = complete
@@ -39,7 +39,10 @@ func (m *mapHandler) completeTodo(id int, complete bool) bool {
 	}
 	return false
 }
-func newMapHandler() dbHandlerInterface {
+func (m *mapHandler) Close() {
+}
+
+func newMapHandler() DataHandlerInterface {
 	m := &mapHandler{}
 	m.todoMap = make(map[int]*Todo)
 	m.genID = 0
