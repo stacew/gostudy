@@ -15,7 +15,7 @@ import (
 
 func TestUploadTest(t *testing.T) {
 	assert := assert.New(t)
-	path := "C:/Users/chunr/OneDrive/사진/스크린샷/Test용.png"
+	path := "C:/Users/chunr/사진/스크린샷/Test용.png"
 	file, _ := os.Open(path)
 	defer file.Close()
 

@@ -34,18 +34,6 @@ func uploadsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	path := "C:/a.png"
-	if _, err := os.Stat(path); os.IsExist(err) {
-	}
-
-	_, err := os.Stat(path)
-	if err != nil {
-
-	}
-	_, err2 := os.Stat(path)
-	if err2 != nil {
-
-	}
 
 	http.HandleFunc("/uploads", uploadsHandler)
 	http.Handle("/", http.FileServer(http.Dir("public")))
