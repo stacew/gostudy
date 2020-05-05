@@ -2,13 +2,19 @@ package app
 
 import (
 	"net/http"
+	"os"
 	"strconv"
+	"strings"
 
 	"github.com/gorilla/mux"
+	"github.com/gorilla/sessions"
 	"github.com/stacew/gostudy/tucker/web8/dataModel"
+	"github.com/urfave/negroni"
 
 	"github.com/unrolled/render"
 )
+
+var store = sessions.NewCookieStore([]byte(os.Getenv("SESSION_KEY")))
 
 var rd *render.Render = render.New()
 
@@ -64,12 +70,54 @@ func (a *AppHandler) Close() {
 	a.dmHandler.Close()
 }
 
+func getSessionID(r *http.Request) string {
+	session, _ := store.Get(r, "session")
+
+	// Set some session values.
+	val := session.Values["id"]
+	if val == nil {
+		return ""
+	}
+
+	return val.(string)
+}
+
+func CheckSignin(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+
+	//주의. user가 로그인 페이지를 눌렀는데, redirect signin.html로 무한루프 되기 때문에 이 부분을 처리해준다.
+	//if request URL is /signin.html, then next()
+	if strings.Contains(r.URL.Path, "/signin.html") ||
+		strings.Contains(r.URL.Path, "/auth") {
+		next(w, r)
+		return
+	}
+
+	sessionID := getSessionID(r)
+	// if user already signed in
+	if sessionID != "" {
+		next(w, r) //다음 핸들러 static file
+		return
+	}
+
+	// if not user sign in redirect signin.html
+	http.Redirect(w, r, "/signin.html", http.StatusTemporaryRedirect)
+}
+
 func MakeNewHandler(filepath string) *AppHandler {
 
 	r := mux.NewRouter()
 
+	//네그로니에 미들웨어를 추가할 수 있다. 구글 세션 때문에 데코레이터 패턴을 새로 안 만들고 사용 가능.
+	//네그로니 Classic()에 3가지 데코레이터 기본 recovery, logger, static file 처리가 있는데
+	//staic file 처리 전에 Signin 체크를 먼저 해야하기 때문에 밖으로 New를 뺌.
+	//neg := negroni.Classic()
+	//siginin에서 끊기면 router로 돌아가도록 negroni.HandlerFunc(CheckSignin) 네그로니의 핸들러 펑션으로 동록
+	neg := negroni.New(negroni.NewRecovery(), negroni.NewLogger(), negroni.HandlerFunc(CheckSignin), negroni.NewStatic(http.Dir("public")))
+
+	neg.UseHandler(r)
+
 	a := &AppHandler{
-		Handler:   r,
+		Handler:   neg,
 		dmHandler: dataModel.NewDataHandler(filepath),
 	}
 
@@ -77,6 +125,8 @@ func MakeNewHandler(filepath string) *AppHandler {
 	r.HandleFunc("/todoH", a.addTodoHandler).Methods("POST")
 	r.HandleFunc("/todoH/{id:[0-9]+}", a.removeTodoHandler).Methods("DELETE")
 	r.HandleFunc("/complete-todoH/{id:[0-9]+}", a.completeTodoHandler).Methods("GET")
+	r.HandleFunc("/auth/google/login", googleLoginHandler)
+	r.HandleFunc("/auth/google/callback", googleAuthCallback)
 	r.HandleFunc("/", a.indexHandler)
 
 	return a
