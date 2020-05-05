@@ -86,7 +86,7 @@ func CheckSignin(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) 
 
 	//주의. user가 로그인 페이지를 눌렀는데, redirect signin.html로 무한루프 되기 때문에 이 부분을 처리해준다.
 	//if request URL is /signin.html, then next()
-	if strings.Contains(r.URL.Path, "/signin.html") ||
+	if strings.Contains(r.URL.Path, "/signin") ||
 		strings.Contains(r.URL.Path, "/auth") {
 		next(w, r)
 		return
