@@ -8,10 +8,9 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
-	"github.com/stacew/gostudy/tucker/web8/dataModel"
-	"github.com/urfave/negroni"
-
+	"github.com/stacew/gostudy/tuckersweb/web8/dataModel"
 	"github.com/unrolled/render"
+	"github.com/urfave/negroni"
 )
 
 var store = sessions.NewCookieStore([]byte(os.Getenv("SESSION_KEY")))
@@ -32,13 +31,15 @@ func (a *AppHandler) indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *AppHandler) getTodoListHandler(w http.ResponseWriter, r *http.Request) {
-	list := a.dmHandler.GetTodos()
+	sessionId := getSessionID(r)
+	list := a.dmHandler.GetTodos(sessionId)
 	rd.JSON(w, http.StatusOK, list)
 }
 
 func (a *AppHandler) addTodoHandler(w http.ResponseWriter, r *http.Request) {
+	sessionId := getSessionID(r)
 	name := r.FormValue("name")
-	todo := a.dmHandler.AddTodo(name)
+	todo := a.dmHandler.AddTodo(sessionId, name)
 	rd.JSON(w, http.StatusCreated, todo)
 }
 
@@ -70,7 +71,10 @@ func (a *AppHandler) Close() {
 	a.dmHandler.Close()
 }
 
-func getSessionID(r *http.Request) string {
+//실제로 이 함수를 쓰긴 해야하지만, 테스트 함수에서 쓰기 위해 람다형식 개조.
+
+// func getSessionID(r *http.Request) string {
+var getSessionID = func(r *http.Request) string {
 	session, _ := store.Get(r, "session")
 
 	// Set some session values.
@@ -85,7 +89,7 @@ func getSessionID(r *http.Request) string {
 func CheckSignin(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
 
 	//주의. user가 로그인 페이지를 눌렀는데, redirect signin.html로 무한루프 되기 때문에 이 부분을 처리해준다.
-	//if request URL is /signin.html, then next()
+	//if request URL is /signin.html, then next() signin.css도 처리 필요
 	if strings.Contains(r.URL.Path, "/signin") ||
 		strings.Contains(r.URL.Path, "/auth") {
 		next(w, r)

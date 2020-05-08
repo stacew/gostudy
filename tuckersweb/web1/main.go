@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/stacew/gostudy/tucker/web1/myapp"
+	"github.com/stacew/gostudy/tuckersweb/web1/myapp"
 )
 
 func main() {

@@ -15,6 +15,10 @@ import (
 )
 
 func TestTodos(t *testing.T) {
+	getSessionID = func(r *http.Request) string {
+		return "testsessionID"
+	}
+
 	assert := assert.New(t)
 
 	testFilePath := "./test.db"

@@ -11,9 +11,9 @@ type sqliteHandler struct {
 	db *sql.DB
 }
 
-func (s *sqliteHandler) GetTodos() []*Todo {
+func (s *sqliteHandler) GetTodos(sessionId string) []*Todo {
 	todos := []*Todo{}
-	rows, err := s.db.Query("SELECT id, name, completed, createdAt FROM todos")
+	rows, err := s.db.Query("SELECT id, name, completed, createdAt FROM todos WHERE sessionId=?", sessionId)
 	if err != nil {
 		panic(err)
 	}
@@ -27,13 +27,13 @@ func (s *sqliteHandler) GetTodos() []*Todo {
 
 	return todos
 }
-func (s *sqliteHandler) AddTodo(name string) *Todo {
-	stmt, err := s.db.Prepare("INSERT INTO todos (name, completed, createdAt) VALUES (?, ?, datetime('now'))")
+func (s *sqliteHandler) AddTodo(sessionId string, name string) *Todo {
+	stmt, err := s.db.Prepare("INSERT INTO todos (sessionId, name, completed, createdAt) VALUES (?, ?, ?, datetime('now'))")
 	if err != nil {
 		panic(err)
 	}
 
-	result, err := stmt.Exec(name, false)
+	result, err := stmt.Exec(sessionId, name, false)
 	if err != nil {
 		panic(err)
 	}
@@ -84,10 +84,16 @@ func newSqliteHandler(filepath string) DataHandlerInterface {
 	statement, _ := database.Prepare(
 		`CREATE TABLE IF NOT EXISTS todos (
 			id 			INTEGER PRIMARY KEY AUTOINCREMENT,
+			sessionId	STRING,
 			name		TEXT,
 			completed	BOOLEAN,
 			createdAt	DATETIME
-		)`)
+		);
+		CREATE INDEX IF NOT EXISTS sessionIdIndexOnTodos ON todos (
+			sessionId ASC
+		);`)
+	// Index 작업. 기존 DB 순차탐색이라 느리기 떄문에 이렇게 처리하려 map key value 느낌으로
+	// 추가 될 때 Index 트리를 만듬.
 	statement.Exec()
 
 	return &sqliteHandler{db: database}

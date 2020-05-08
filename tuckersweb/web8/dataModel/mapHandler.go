@@ -9,14 +9,14 @@ type mapHandler struct {
 
 //var todoSlice []*Todo
 
-func (m *mapHandler) GetTodos() []*Todo {
+func (m *mapHandler) GetTodos(sessionId string) []*Todo {
 	list := []*Todo{}
 	for _, v := range m.todoMap {
 		list = append(list, v)
 	}
 	return list
 }
-func (m *mapHandler) AddTodo(name string) *Todo {
+func (m *mapHandler) AddTodo(sessionId string, name string) *Todo {
 	id := m.genID
 	m.genID++
 

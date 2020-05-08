@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/stacew/gostudy/tucker/decoratorComponent1/cipher"
-	"github.com/stacew/gostudy/tucker/decoratorComponent1/lzw"
+	"github.com/stacew/gostudy/tuckersweb/decoratorComponent1/cipher"
+	"github.com/stacew/gostudy/tuckersweb/decoratorComponent1/lzw"
 )
 
 //interface

@@ -18,5 +18,6 @@
 
 
 
-#db
+#my setting
 *.db
+*.csv
