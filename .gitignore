@@ -21,3 +21,4 @@
 #my setting
 *.db
 *.csv
+__debug_bin
