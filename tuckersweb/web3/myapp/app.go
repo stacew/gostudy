@@ -159,8 +159,8 @@ func NewHandler() http.Handler {
 	lastID = 0
 	userMap = make(map[int]*User)
 
-	//mux := http.NewServeMux() emplace gorilla mux
-	mux := mux.NewRouter()
+	//mux := http.NewServeMux()
+	mux := mux.NewRouter() // emplace gorilla mux
 
 	mux.HandleFunc("/", indexHandler)
 	mux.HandleFunc("/users", usersHandler).Methods("GET")

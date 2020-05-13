@@ -10,9 +10,9 @@ web3 restful api
 web4 decorator handler
 
 web5 pat, render, negroni
-고릴라/pat : 짧은 Rest API 사용 가능
-render : ResponseWriter에 json코드 압축 사용
-negroni : public 폴더의 파일들을 기본적으로 제공?
+고릴라/pat : Rest API 다 짧게 사용 가능
+render : ResponseWriter에 쉽게 json, html, text 코드 사용 가능
+negroni : 로그 기능 + '/' 없이 public 파일들을 제공 가능
 
 web6 EventSource를 사용한 채팅프로그램
 EventSource : socket처럼 연결해서 사용하는 느낌

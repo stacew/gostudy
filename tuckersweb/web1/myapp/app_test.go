@@ -77,7 +77,7 @@ func TestFooHandler_WithJson(t *testing.T) {
 
 	assert.Equal(http.StatusCreated, resp.Code)
 
-	user := new(User)
+	user := new(UserClass)
 	err := json.NewDecoder(resp.Body).Decode(user)
 	assert.Nil(err)
 	assert.Equal("ys", user.FirstName)

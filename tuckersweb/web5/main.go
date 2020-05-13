@@ -67,27 +67,29 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
 	rd = render.New()
 	rd = render.New(render.Options{
-		Directory:  "template",                 //default:templates
-		Extensions: []string{".html", ".tmpl"}, //default:tmpl
+		Directory:  "templates",                //default:templates
+		Extensions: []string{".html", ".tmpl"}, //default:tmpl, html확장자도 temlplates 가능.
 		Layout:     "hello",
 	})
 
-	//고릴라/mux -> 고릴라/pat으로 변경
+	//고릴라/mux -> 고릴라/pat으로 변경하면 RestAPI 더 짧게 사용 가능.
 	// mux := mux.NewRouter()
 	// mux.HandleFunc("/users", getUserInfoHandler).Methods("GET")
-	// mux.HandleFunc("/users", addUserHandler).Methods("POST")
 	mux := pat.New()
 	mux.Get("/users", getUserInfoHandler)
+
 	mux.Post("/users", addUserHandler)
+
 	mux.Get("/hello", helloHandler)
 
 	//negroni
 	//mux.Handle("/", http.FileServer(http.Dir("public")))
-	//http.ListenAndServe(":3000", mux)
-	n := negroni.Classic() //public 파일들을 기본적으로 제공
+	n := negroni.Classic() // 로그 기능 + '/' 없이 public 파일들을 제공 가능
 	n.UseHandler(mux)
+
 	http.ListenAndServe(":3000", n)
 
 }
