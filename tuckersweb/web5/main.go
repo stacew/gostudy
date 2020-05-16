@@ -68,7 +68,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	rd = render.New()
+	//rd = render.New()
 	rd = render.New(render.Options{
 		Directory:  "templates",                //default:templates
 		Extensions: []string{".html", ".tmpl"}, //default:tmpl, html확장자도 temlplates 가능.
