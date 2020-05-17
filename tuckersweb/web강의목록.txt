@@ -20,7 +20,7 @@ EventSource : socket처럼 연결해서 사용하는 느낌
 web7 oAuth 2.0
 로그인 시스템 이용
 리다이렉트 URI 설정, 환경 변수 ID, KEY 설정
-http://localhost:3000/auth/google/callback
+http://localhost:8080/auth/google/callback
 go get golang.org/x/oauth2
 go get cloud.google.com/go
 

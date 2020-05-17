@@ -11,5 +11,5 @@ func main() {
 	mux := app.MakeNewHandler("./test.db") //실행인자 이용 가능 flag.Arg
 	defer mux.Close()
 
-	http.ListenAndServe(":3000", mux)
+	http.ListenAndServe(":8080", mux)
 }

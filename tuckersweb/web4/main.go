@@ -32,5 +32,5 @@ func NewHandler() http.Handler {
 
 func main() {
 	mux := NewHandler()
-	http.ListenAndServe(":3000", mux)
+	http.ListenAndServe(":8080", mux)
 }

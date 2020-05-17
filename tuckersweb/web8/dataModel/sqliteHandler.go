@@ -89,6 +89,7 @@ func newSqliteHandler(filepath string) DataHandlerInterface {
 			completed	BOOLEAN,
 			createdAt	DATETIME
 		);
+
 		CREATE INDEX IF NOT EXISTS sessionIdIndexOnTodos ON todos (
 			sessionId ASC
 		);`)

@@ -90,6 +90,6 @@ func main() {
 	n := negroni.Classic() // 로그 기능 + '/' 없이 public 파일들을 제공 가능
 	n.UseHandler(mux)
 
-	http.ListenAndServe(":3000", n)
+	http.ListenAndServe(":8080", n)
 
 }
