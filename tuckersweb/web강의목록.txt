@@ -24,5 +24,6 @@ http://localhost:8080/auth/google/callback
 go get golang.org/x/oauth2
 go get cloud.google.com/go
 
-web8 bootstrap jquery
+web8 bootstrap jquery -> todos 프로젝트로 변경
 tdm-gcc: MinGW go-sqlite3 CRUD
+

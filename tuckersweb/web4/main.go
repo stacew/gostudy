@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/stacew/gostudy/tuckersweb/web4/decoHandler"
-	"github.com/stacew/gostudy/tuckersweb/web4/myapp"
+	"stacew/gostudy/tuckersweb/web4/decoHandler"
+	"stacew/gostudy/tuckersweb/web4/myapp"
 )
 
 func logger1(w http.ResponseWriter, r *http.Request, h http.Handler) {

@@ -5,11 +5,12 @@ import (
 	"log"
 	"math/rand"
 
+	"stacew/gostudy/tuckersgame/picturepuzzle/global"
+
 	"github.com/hajimehoshi/ebiten/inpututil"
 
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
-	"github.com/stacew/gostudy/tuckersgame/picturepuzzle/global"
 )
 
 type GameScene struct {

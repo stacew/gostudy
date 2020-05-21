@@ -3,7 +3,7 @@ package scenes
 import (
 	"log"
 
-	"github.com/stacew/gostudy/tuckersgame/12jangi/scenemanager"
+	"stacew/gostudy/tuckersgame/12jangi/scenemanager"
 
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"

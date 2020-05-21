@@ -2,13 +2,13 @@ package scenes
 
 import (
 	"log"
+	"stacew/gostudy/tuckersgame/rungame/actor"
 
-	"github.com/stacew/gostudy/tuckersgame/rungame/actor"
-	"github.com/stacew/gostudy/tuckersgame/rungame/bgscroller"
+	"stacew/gostudy/tuckersgame/rungame/bgscroller"
+	"stacew/gostudy/tuckersgame/rungame/global"
 
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
-	"github.com/stacew/gostudy/tuckersgame/rungame/global"
 )
 
 type GameScene struct {

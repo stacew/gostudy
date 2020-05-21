@@ -3,12 +3,13 @@ package app
 import (
 	"net/http"
 	"os"
+	"stacew/gostudy/tuckersweb/web8/dataModel"
 	"strconv"
 	"strings"
 
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
-	"github.com/stacew/gostudy/tuckersweb/web8/dataModel"
+
 	"github.com/unrolled/render"
 	"github.com/urfave/negroni"
 )

@@ -4,9 +4,10 @@ import (
 	"image"
 	"log"
 
+	"stacew/gostudy/tuckersgame/rungame/animation"
+
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
-	"github.com/stacew/gostudy/tuckersgame/rungame/animation"
 )
 
 //runner.png frame

@@ -4,8 +4,8 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/stacew/gostudy/tuckersgame/12jangi/global"
-	"github.com/stacew/gostudy/tuckersgame/12jangi/scenemanager"
+	"stacew/gostudy/tuckersgame/12jangi/global"
+	"stacew/gostudy/tuckersgame/12jangi/scenemanager"
 
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"

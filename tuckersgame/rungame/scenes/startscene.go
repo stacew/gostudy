@@ -4,14 +4,15 @@ import (
 	"image/color"
 	"log"
 
+	"stacew/gostudy/tuckersgame/rungame/actor"
+	"stacew/gostudy/tuckersgame/rungame/bgscroller"
+	"stacew/gostudy/tuckersgame/rungame/font"
+	"stacew/gostudy/tuckersgame/rungame/global"
+	"stacew/gostudy/tuckersgame/rungame/scenemanager"
+
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 	"github.com/hajimehoshi/ebiten/inpututil"
-	"github.com/stacew/gostudy/tuckersgame/rungame/actor"
-	"github.com/stacew/gostudy/tuckersgame/rungame/bgscroller"
-	"github.com/stacew/gostudy/tuckersgame/rungame/font"
-	"github.com/stacew/gostudy/tuckersgame/rungame/global"
-	"github.com/stacew/gostudy/tuckersgame/rungame/scenemanager"
 )
 
 type StartScene struct {

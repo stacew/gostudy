@@ -3,12 +3,12 @@ package main
 import (
 	"log"
 	"math/rand"
+	"stacew/gostudy/tuckersgame/rungame/global"
+	"stacew/gostudy/tuckersgame/rungame/scenemanager"
+	"stacew/gostudy/tuckersgame/rungame/scenes"
 	"time"
 
 	"github.com/hajimehoshi/ebiten"
-	"github.com/stacew/gostudy/tuckersgame/rungame/global"
-	"github.com/stacew/gostudy/tuckersgame/rungame/scenemanager"
-	"github.com/stacew/gostudy/tuckersgame/rungame/scenes"
 )
 
 func main() {

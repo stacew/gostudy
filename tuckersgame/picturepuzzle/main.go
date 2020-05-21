@@ -3,12 +3,12 @@ package main
 import (
 	"log"
 	"math/rand"
+	"stacew/gostudy/tuckersgame/picturepuzzle/global"
+	"stacew/gostudy/tuckersgame/picturepuzzle/scenemanager"
+	"stacew/gostudy/tuckersgame/picturepuzzle/scenes"
 	"time"
 
 	"github.com/hajimehoshi/ebiten"
-	"github.com/stacew/gostudy/tuckersgame/picturepuzzle/global"
-	"github.com/stacew/gostudy/tuckersgame/picturepuzzle/scenemanager"
-	"github.com/stacew/gostudy/tuckersgame/picturepuzzle/scenes"
 )
 
 func main() {

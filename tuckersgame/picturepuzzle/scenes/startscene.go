@@ -3,13 +3,13 @@ package scenes
 import (
 	"image/color"
 	"log"
+	"stacew/gostudy/tuckersgame/picturepuzzle/font"
+	"stacew/gostudy/tuckersgame/picturepuzzle/global"
+	"stacew/gostudy/tuckersgame/picturepuzzle/scenemanager"
 
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 	"github.com/hajimehoshi/ebiten/inpututil"
-	"github.com/stacew/gostudy/tuckersgame/picturepuzzle/font"
-	"github.com/stacew/gostudy/tuckersgame/picturepuzzle/global"
-	"github.com/stacew/gostudy/tuckersgame/picturepuzzle/scenemanager"
 )
 
 type StartScene struct {

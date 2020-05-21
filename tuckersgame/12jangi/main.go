@@ -2,11 +2,11 @@ package main
 
 import (
 	"log"
+	"stacew/gostudy/tuckersgame/12jangi/global"
+	"stacew/gostudy/tuckersgame/12jangi/scenemanager"
+	"stacew/gostudy/tuckersgame/12jangi/scenes"
 
 	"github.com/hajimehoshi/ebiten"
-	"github.com/stacew/gostudy/tuckersgame/12jangi/global"
-	"github.com/stacew/gostudy/tuckersgame/12jangi/scenemanager"
-	"github.com/stacew/gostudy/tuckersgame/12jangi/scenes"
 )
 
 func main() {

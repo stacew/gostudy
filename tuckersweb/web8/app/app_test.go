@@ -7,10 +7,10 @@ import (
 	"net/http/httptest"
 	"net/url"
 	"os"
+	"stacew/gostudy/tuckersweb/web8/dataModel"
 	"strconv"
 	"testing"
 
-	"github.com/stacew/gostudy/tucker/web8/dataModel"
 	"github.com/stretchr/testify/assert"
 )
 

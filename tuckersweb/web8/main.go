@@ -2,8 +2,7 @@ package main
 
 import (
 	"net/http"
-
-	"github.com/stacew/gostudy/tuckersweb/web8/app"
+	"stacew/gostudy/tuckersweb/web8/app"
 )
 
 func main() {
