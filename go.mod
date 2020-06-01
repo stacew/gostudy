@@ -8,6 +8,7 @@ require (
 	github.com/gorilla/mux v1.7.4
 	github.com/gorilla/pat v1.0.1
 	github.com/gorilla/sessions v1.2.0
+	github.com/gorilla/websocket v1.4.2
 	github.com/hajimehoshi/ebiten v1.11.1
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible
 	github.com/stretchr/testify v1.5.1
