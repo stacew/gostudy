@@ -2,21 +2,23 @@ package main
 
 import (
 	"fmt"
+	"stacew/gostudy/tuckersweb/decoratorComponent2/cipher"
+	"stacew/gostudy/tuckersweb/decoratorComponent2/lzw"
 )
 
-//interface
+//Decorator interface
 type Component interface {
 	Operator(string) string
 }
 
 //1
 type SendComponent struct {
-	com Component
+	zipCom Component
 }
 
 func (self *SendComponent) Operator(data string) string {
-	if self.com != nil {
-		data = self.com.Operator(data)
+	if self.zipCom != nil {
+		data = self.zipCom.Operator(data)
 	}
 
 	return data
@@ -24,13 +26,13 @@ func (self *SendComponent) Operator(data string) string {
 
 //2
 type ZipComponent struct {
-	com Component
+	encryptCom Component
 }
 
 func (self *ZipComponent) Operator(data string) string {
 	//component -> zip
-	if self.com != nil {
-		data = self.com.Operator(data)
+	if self.encryptCom != nil {
+		data = self.encryptCom.Operator(data)
 	}
 
 	zipData, err := lzw.Write([]byte(data))
@@ -58,12 +60,12 @@ func (self *EncryptComponent) Operator(data string) string {
 /////////////////////////
 //1
 type ReadComponent struct {
-	com Component
+	unzipCom Component
 }
 
 func (self *ReadComponent) Operator(data string) string {
-	if self.com != nil {
-		data = self.com.Operator(data)
+	if self.unzipCom != nil {
+		data = self.unzipCom.Operator(data)
 	}
 
 	return data
@@ -71,7 +73,7 @@ func (self *ReadComponent) Operator(data string) string {
 
 //2
 type UnzipComponent struct {
-	com Component
+	decryptCom Component
 }
 
 func (self *UnzipComponent) Operator(data string) string {
@@ -82,8 +84,8 @@ func (self *UnzipComponent) Operator(data string) string {
 	}
 
 	strUnzipData := string(unzipData)
-	if self.com != nil {
-		strUnzipData = self.com.Operator(strUnzipData)
+	if self.decryptCom != nil {
+		strUnzipData = self.decryptCom.Operator(strUnzipData)
 	}
 
 	return strUnzipData
@@ -105,8 +107,8 @@ func (self *DecryptComponent) Operator(data string) string {
 //main
 func main() {
 	sender := &SendComponent{
-		com: &ZipComponent{
-			//com: &EncryptComponent{
+		zipCom: &ZipComponent{
+			//encryptCom : &EncryptComponent{
 			//	key: "abcd",
 			//},
 		},
@@ -116,8 +118,8 @@ func main() {
 	fmt.Println(sendData)
 
 	receiver := &ReadComponent{
-		com: &UnzipComponent{
-			//com: &DecryptComponent{
+		unzipCom: &UnzipComponent{
+			//decryptCom: &DecryptComponent{
 			//	key: "abcd",
 			//},
 		},

@@ -27,6 +27,6 @@ func main() {
 
 	//tmpl.ExecuteTemplate(os.Stdout, "tmpl2.tmpl", user)
 	//tmpl.ExecuteTemplate(os.Stdout, "tmpl2.tmpl", user2)
-	//{{range .}}으로 변경
+	//{{range .}}
 	tmpl.ExecuteTemplate(os.Stdout, "tmpl2.tmpl", users)
 }
