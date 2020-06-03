@@ -3,6 +3,7 @@ module stacew/gostudy
 go 1.14
 
 require (
+	github.com/antage/eventsource v0.0.0-20190412115600-84b661236871
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
 	github.com/gorilla/context v1.1.1 // indirect
 	github.com/gorilla/mux v1.7.4
