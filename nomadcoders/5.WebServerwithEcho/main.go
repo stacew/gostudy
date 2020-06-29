@@ -8,8 +8,6 @@ import (
 	scrapper "stacew/gostudy/nomadcoders/4.JobScrapper"
 )
 
-//github.com/labstack/echo
-
 func handleHome(c echo.Context) error {
 	return c.File("home.html")
 }

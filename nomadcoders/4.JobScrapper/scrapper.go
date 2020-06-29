@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/puerkitobio/goquery"
+	"github.com/PuerkitoBio/goquery"
 )
 
 const FileName string = "jobs.csv"
@@ -47,6 +47,8 @@ func writeJobs(jobs []extractedJob) {
 	checkErr(err)
 
 	w := csv.NewWriter(file)
+	utf8 := []byte{0xEF, 0xBB, 0xBF}
+	w.Write([]string{string(utf8[:])})
 	defer w.Flush()
 
 	headers := []string{"ID", "Title", "Location", "Salary", "Summary"}
